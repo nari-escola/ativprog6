@@ -9,7 +9,7 @@
 </head>
 <body>
     <main class="container">
-        <form action="cadastraCliente.php" onsubmit="validarUsuarioSenha()" method="post">
+        <form action="cadastraCliente.php" onsubmit="return validarUsuario() && validarSenha()" method="post">
             <fieldset>
                 <legend>Dados Pessoais</legend>
 
@@ -93,7 +93,7 @@
                 <label for="arquivo">Escolha um arquivo</label>
                 <input type="file" id="arquivo" name="arquivo">    
             </fieldset>
-            <button onclick="validarCamposFormulario()">Enviar</button>
+            <button id="botaoFormulario">Enviar</button>
         </form>
     </main>
 </body>

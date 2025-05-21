@@ -10,7 +10,7 @@ function validarCamposFormulario() {
       var campo = campos[i];
   
       // Verificar o tipo do campo
-      if (campo.type === 'text' || campo.type === 'email' || campo.type === 'number' || campo.type === 'tel') {
+      if (campo.type === 'text' || campo.type === 'email' || campo.type === 'number' || campo.type === 'tel' || campo.type === 'password') {
         // Verificar se o campo está em branco
         if (campo.value.trim() === '') {
           // Adicionar o nome do campo ao array
@@ -64,15 +64,8 @@ document.getElementById('cep').addEventListener('input', function(e) {
 e.target.value = aplicarMascaraCEP(e.target.value);
 });
 
-function validarUsuarioSenha() {
-    const usuario = document.getElementById("usuario").value.trim();
-    const senha = document.getElementById("senha").value;
-
-    // Verificar se o usuário tem pelo menos 5 caracteres
-    if (usuario.length < 5) {
-        alert("O usuário deve ter pelo menos 5 caracteres.");
-        return false;
-    }
+function validarSenha() {
+    var senha = document.getElementById("password").value;
 
     // Verificar se a senha tem pelo menos 8 caracteres
     if (senha.length < 8) {
@@ -97,8 +90,22 @@ function validarUsuarioSenha() {
         alert("A senha deve conter símbolos (ex: ! @ #).");
         return false;
     }
-    
+
     return true; // Permite o envio do formulário
 }
 
+function validarUsuario() {
+    var usuario = document.getElementById("usuario").value;
+
+    // Verificar se o usuário tem pelo menos 5 caracteres
+    if (usuario.length < 5) {
+        alert("O usuário deve ter pelo menos 5 caracteres.");
+        return false;
     
+    }
+    return true; // Permite o envio do formulário
+}
+
+document.getElementById("botaoFormulario").addEventListener("click", function() {
+    validarCamposFormulario();
+});
